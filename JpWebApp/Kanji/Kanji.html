@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja-ap">
+<head>
+	<title>日本語を勉強しよう！</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!--link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet"-->
+    <script src="http://cdn.bootcss.com/jquery/1.12.0/jquery.min.js"></script>
+    <!--script src="jquery/jquery-1.12.0.min.js"></script-->
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script-->
+	<script src="js/KanjiObj.js?1=8"></script>
+	<script src="js/kanji.js?1=1"></script>
+	<style>
+		.col-xs-6, .col-xs-4 {padding-left:5px;padding-right:5px;}
+		.form-control {padding:6px 3px;}
+		.navbar {margin-bottom:5px;}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">漢字クイズ</a>
+			</div>
+		</div>
+	</nav>
+	<ul class="nav nav-pills">
+		<li role="presentation" class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+				学年<span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li role="presentation" class="active"><a href="#" id="shougaku1" data-index="0">1年生</a></li>
+				<li role="presentation"><a href="#" id="shougaku2" data-index="1">2年生</a></li>
+				<li role="presentation"><a href="#" id="shougaku3" data-index="2">3年生</a></li>
+				<li role="presentation"><a href="#" id="shougaku4" data-index="3">4年生</a></li>
+				<li role="presentation"><a href="#" id="shougaku5" data-index="4">5年生</a></li>
+				<li role="presentation"><a href="#" id="shougaku6" data-index="5">6年生</a></li>
+				<li role="presentation"><a href="#" id="shougaku7" data-index="6">中学(非動詞)</a></li>
+				<li role="presentation"><a href="#" id="shougaku8" data-index="7">中学(動詞)</a></li>
+				<li role="presentation"><a href="#" id="shougaku9" data-index="8">表外</a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active container-fluid" id="shougaku">
+			<div class="row" style="margin-bottom:5px;">
+				<div class="col-md-4 col-xs-4">
+					<button type="button" class="btn btn-default form-control disabled" id="process">0/0</button>
+				</div>
+				<div class="col-md-4 col-xs-4">
+					<button type="button" class="btn btn-default form-control" id="doAgain">もう一度やる</button>
+				</div>
+				<div class="col-md-4 col-xs-4">
+					<button type="button" class="btn btn-default form-control" id="next">次へ</button>
+				</div>
+			</div>
+			<div class="row" data-name="kannji">
+				<div class="col-md-1 col-xs-3"><label class="control-label">漢字</label></div>
+				<div class="col-md-11 col-xs-9"><label id="kanji">漢字</label></div>
+			</div>
+			<div class="row form-horizontal" data-name="ondoku">
+				<div class="col-md-1 col-xs-3"><label class="control-label">音読</label></div>
+				<div class="col-md-11 col-xs-9">
+					<div class="row" id="ondoku">
+					</div>
+				</div>
+			</div>
+			<div class="row form-horizontal" data-name="kundoku">
+				<div class="col-md-1 col-xs-3"><label class="control-label">訓読</label></div>
+				<div class="col-md-11 col-xs-9">
+					<div class="row" id="kundoku">
+					</div>
+				</div>
+			</div>
+			<div class="row form-horizontal" data-name="doushi">
+				<div class="col-md-1 col-xs-3"><label class="control-label">動詞</label></div>
+				<div class="col-md-11 col-xs-9">
+					<div class="row" id="doushi">
+					</div>
+				</div>
+			</div>
+			<div class="row form-horizontal" data-name="keiyoushi">
+				<div class="col-md-1 col-xs-3"><label class="control-label">形容詞</label></div>
+				<div class="col-md-11 col-xs-9">
+					<div class="row" id="keiyoushi">
+					</div>
+				</div>
+			</div>
+			<div class="row form-horizontal" data-name="keiyoudoushi">
+				<div class="col-md-1 col-xs-3"><label class="control-label">形容動詞</label></div>
+				<div class="col-md-11 col-xs-9">
+					<div class="row" id="keiyoudoushi">
+					</div>
+				</div>
+			</div>
+			<div class="row form-horizontal" data-name="meishi">
+				<div class="col-md-1 col-xs-3"><label class="control-label">名詞</label></div>
+				<div class="col-md-11 col-xs-9">
+					<div class="row" id="meishi">
+					</div>
+				</div>
+			</div>
+			<div class="row form-horizontal" data-name="rentaikei">
+				<div class="col-md-1 col-xs-3"><label class="control-label">連体形</label></div>
+				<div class="col-md-11 col-xs-9">
+					<div class="row" id="rentaikei">
+					</div>
+				</div>
+			</div>
+			<div class="row form-horizontal" data-name="fukushi">
+				<div class="col-md-1 col-xs-3"><label class="control-label">副詞</label></div>
+				<div class="col-md-11 col-xs-9">
+					<div class="row" id="fukushi">
+					</div>
+				</div>
+			</div>
+			<div class="row form-horizontal" data-name="setuzokushi">
+				<div class="col-md-1 col-xs-3"><label class="control-label">接続詞</label></div>
+				<div class="col-md-11 col-xs-9">
+					<div class="row" id="setuzokushi">
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top:5px;">
+				<div class="col-md-6 col-xs-6">
+					<button type="button" class="btn btn-default form-control" id="check">答えをチェックする</button>
+				</div>
+				<div class="col-md-6 col-xs-6">
+					<button type="button" class="btn btn-default form-control" id="seeAnswer">正しい答えを見る</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
