@@ -1,2 +1,2 @@
 # JapaneseLearning
-A tity web-app to provide self-test serive.
+A tiny web-app to provide self-test serive.
