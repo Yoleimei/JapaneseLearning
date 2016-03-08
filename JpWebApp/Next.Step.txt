@@ -1,5 +1,5 @@
-1 数字
-2 几点几分
-3 星期
-4 几月几号
-5 数量
+1 figure
+2 time
+3 week
+4 date
+5 quantity
